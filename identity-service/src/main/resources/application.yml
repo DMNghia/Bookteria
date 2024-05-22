@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /identity-service
+
+spring:
+  application:
+    name: identity-service
+  config:
+    import: classpath:config/config.properties
+  datasource:
+    url: jdbc:mysql://localhost:3306/identity_service?createDatabaseIfNotExist=true
+    username: root
+    password: Nghia
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+application:
+  security:
+    jwt:
+      secret-key: ${JWT_SECRET_KEY}
+      expiration: ${JWT_EXPIRATION}
+      refresh-token:
+        expiration: ${REFRESH_TOKEN_EXPIRATION}
+      issuer: ${JWT_ISSUER}
+    password-salt: ${PASSWORD_SALT}
