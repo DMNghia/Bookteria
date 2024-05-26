@@ -16,10 +16,9 @@ import java.util.List;
 @Data
 @Builder
 public class UserLoginPrinciple implements UserDetails {
-    private String email;
-    private String reference;
-    private String name;
-    private boolean gender;
+    private String username;
+    private String firstName;
+    private String lastName;
     private boolean isLocked;
     private boolean isEnabled;
     private List<String> roles;
@@ -37,7 +36,7 @@ public class UserLoginPrinciple implements UserDetails {
 
     @Override
     public String getUsername() {
-        return name;
+        return username;
     }
 
     @Override

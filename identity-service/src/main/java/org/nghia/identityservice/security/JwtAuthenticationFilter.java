@@ -1,7 +1,8 @@
 package org.nghia.identityservice.security;
 
-import com.nghia.springsecuritydemo.dto.UserLoginPrinciple;
-import com.nghia.springsecuritydemo.utils.HttpRequestResponseUtils;
+import org.nghia.identityservice.dto.UserLoginPrinciple;
+import org.nghia.identityservice.service.JwtService;
+import org.nghia.identityservice.utils.HttpRequestResponseUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,7 +28,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private JwtService jwtService;
 
     @Override
-    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) {
+    protected void doFilterInternal(
+            @NonNull HttpServletRequest request,
+            @NonNull HttpServletResponse response,
+            @NonNull FilterChain filterChain) {
         try {
             String token = getTokenFromRequest(request);
             if (StringUtils.hasText(token)) {
